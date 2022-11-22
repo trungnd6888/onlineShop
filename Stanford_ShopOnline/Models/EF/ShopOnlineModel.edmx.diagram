@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01da8f6019cd458383625db2e4dc41ad" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopOnlineModel.Advertise" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Category" Width="1.5" PointX="7.875" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Customer" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Distributor" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Function" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Menu" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Order" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.OrderDetail" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Permission" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Product" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Role" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.User" Width="1.5" PointX="2.125" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopOnlineModel.News" Width="1.5" PointX="0.5" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Order_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Product_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Role_Function" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Role_Approved" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Product_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Product_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_Users_Approved" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_News_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopOnlineModel.FK_News_Users1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShopOnlineModel.MenuChild" Width="1.5" PointX="10" PointY="0.75" />
+        <AssociationConnector Association="ShopOnlineModel.FK_MenuChild_Menu" />
+        <EntityTypeShape EntityType="ShopOnlineModel.Banner" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ShopOnlineModel.sysdiagram" Width="1.5" PointX="10.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

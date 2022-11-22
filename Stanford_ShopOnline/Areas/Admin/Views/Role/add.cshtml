@@ -1,0 +1,46 @@
+﻿@model Stanford_ShopOnline.Models.EF.Role
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="title-5 m-b-35">Thêm mới vai trò</h3>
+        <div class="col-lg-12">
+            @using (Html.BeginForm("add", "Role", FormMethod.Post, new { encType = "multipart/form-data" }))
+            {
+                <form>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, new { @class = "control-label mb-1" }) <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group has-success">
+                                @Html.LabelFor(model => model.Describe, new { @class = "control-label mb-1" }) <span style="color:red">*</span>
+                                @Html.TextBoxFor(model => model.Describe, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Describe, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button id="payment-button" type="submit" class="btn btn-info">
+                            <i class="fa fa-plus"></i>&nbsp;
+                            <span id="payment-button-amount">Thêm</span>
+                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                        </button>
+                        <a href=@Url.Action("list","Role") class="btn btn-info">
+                            <i class="fa fa-arrow-left"></i>&nbsp;
+                            <span id="payment-button-amount">Trở về</span>
+                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                        </a>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>

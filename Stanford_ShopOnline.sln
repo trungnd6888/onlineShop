@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stanford_ShopOnline", "Stanford_ShopOnline\Stanford_ShopOnline.csproj", "{C1FAECBA-BA5A-45F1-BA64-20CF6DF8EAFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stanford_ShopOnline.Tests", "Stanford_ShopOnline.Tests\Stanford_ShopOnline.Tests.csproj", "{038528FB-C649-4555-8C53-E1E3A7A57B14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1FAECBA-BA5A-45F1-BA64-20CF6DF8EAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FAECBA-BA5A-45F1-BA64-20CF6DF8EAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FAECBA-BA5A-45F1-BA64-20CF6DF8EAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FAECBA-BA5A-45F1-BA64-20CF6DF8EAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{038528FB-C649-4555-8C53-E1E3A7A57B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038528FB-C649-4555-8C53-E1E3A7A57B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038528FB-C649-4555-8C53-E1E3A7A57B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038528FB-C649-4555-8C53-E1E3A7A57B14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDC56847-76EA-4B47-8B51-268698C2253D}
+	EndGlobalSection
+EndGlobal

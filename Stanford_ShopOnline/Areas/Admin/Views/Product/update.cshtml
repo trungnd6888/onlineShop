@@ -1,0 +1,230 @@
+﻿@model Stanford_ShopOnline.Models.EF.Product
+@{
+    ViewBag.Title = "update";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script>
+    function handleFileUpdate(file, img, btn, hidden) {
+        $(file).change(function () {
+            console.log($(file)[0].files[0]);
+            $(img).attr("src", URL.createObjectURL($(file)[0].files[0]));
+        });
+
+        $(btn).click(function () {
+            $(img).attr("src", null);
+            $(file).val(null);
+            $(hidden).val(null);
+        });
+    }
+
+    $(document).ready(function () {
+        handleFileUpdate("#fileUpload", "#img-file", "#btn-file", "#img-urlHidden");
+        handleFileUpdate("#fileUpload1", "#img-file1", "#btn-file1", "#img-urlHidden1");
+        handleFileUpdate("#fileUpload2", "#img-file2", "#btn-file2", "#img-urlHidden2");
+        handleFileUpdate("#fileUpload3", "#img-file3", "#btn-file3", "#img-urlHidden3");
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="title-5 m-b-35">Cập nhật sản phẩm</h3>
+        <div class="col-lg-12">
+            @using (Html.BeginForm("update", "Product", FormMethod.Post, new { encType = "multipart/form-data" }))
+            {
+            <form>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Code, new { @class = "control-label mb-1" }) <span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group has-success">
+                            @Html.LabelFor(model => model.Name, new { @class = "control-label mb-1" }) <span style="color:red">*</span>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Detail, new { @class = "control-label mb-1" })
+                    @Html.TextAreaFor(model => model.Detail, new { @class = "form-control", @rows = "4" })
+                    @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Price, new { @class = "control-label mb-1" })
+                            @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @type = "number" })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Discount, new { @class = "control-label mb-1" })
+                            @Html.TextBoxFor(model => model.Discount, new { @class = "form-control", @type = "number" })
+                            @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    @Html.Label("fileUpload", "Đường dẫn ảnh", new { @class = "control-label mb-1" })
+                                    @Html.TextBox("fileUpload", null, new { @class = "form-control d-none", @type = "file" })
+                                    @Html.ValidationMessage("fileUpload", "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ImageUrl, new { @id = "img-urlHidden" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <label class="label-file" id="label-file" for="fileUpload">
+                                    <div class="block-img-file">
+                                        <img class="img-file" id="img-file" src="@Model.ImageUrl" />
+                                    </div>
+                                    <button class="btn-file btn btn-sm btn-danger" id="btn-file" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    @Html.Label("fileUpload1", "Đường dẫn ảnh 1", new { @class = "control-label mb-1" })
+                                    @Html.TextBox("fileUpload1", null, new { @class = "form-control d-none", @type = "file" })
+                                    @Html.ValidationMessage("fileUpload1", "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ImageUrl1, new { @id = "img-urlHidden1" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <label class="label-file" id="label-file1" for="fileUpload1">
+                                    <div class="block-img-file">
+                                        <img class="img-file" id="img-file1" src="@Model.ImageUrl1" />
+                                    </div>
+                                    <button class="btn-file btn btn-sm btn-danger" id="btn-file1" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    @Html.Label("fileUpload2", "Đường dẫn ảnh 2", new { @class = "control-label mb-1" })
+                                    @Html.TextBox("fileUpload2", null, new { @class = "form-control d-none", @type = "file" })
+                                    @Html.ValidationMessage("fileUpload2", "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ImageUrl2, new { @id = "img-urlHidden2" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <label class="label-file" id="label-file2" for="fileUpload2">
+                                    <div class="block-img-file">
+                                        <img class="img-file" id="img-file2" src="@Model.ImageUrl2" />
+                                    </div>
+                                    <button class="btn-file btn btn-sm btn-danger" id="btn-file2" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    @Html.Label("fileUpload3", "Đường dẫn ảnh 3", new { @class = "control-label mb-1" })
+                                    @Html.TextBox("fileUpload3", null, new { @class = "form-control d-none", @type = "file" })
+                                    @Html.ValidationMessage("fileUpload2", "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ImageUrl3, new { @id = "img-urlHidden3" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <label class="label-file" id="label-file3" for="fileUpload3">
+                                    <div class="block-img-file">
+                                        <img class="img-file" id="img-file3" src="@Model.ImageUrl3" />
+                                    </div>
+                                    <button class="btn-file btn btn-sm btn-danger" id="btn-file3" type="button">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Order, new { @class = "control-label mb-1" })
+                            @Html.TextBoxFor(model => model.Order, new { @class = "form-control", @type = "number" })
+                            @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Category_Id, "Danh mục sản phẩm", new { @class = "control-label mb-1" })
+                            @Html.DropDownListFor(model => model.Category_Id, (SelectList)ViewBag.categoryList, "Chọn danh mục", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("Distributor_Id", "Nhà phân phối", new { @class = "control-label mb-1" })
+                            @Html.DropDownList("Distributor_Id", (SelectList)ViewBag.distributorList, "Chọn nhà phân phối", new { @class = "form-control" })
+                            @*Hidden field*@
+                            @Html.HiddenFor(model => model.User_Id)
+                            @Html.HiddenFor(model => model.CreateDate)
+                            @Html.HiddenFor(model => model.ApprovedDate)
+                            @Html.HiddenFor(model => model.Approved_Id)
+                            @Html.HiddenFor(model => model.UpdateDate)
+                            @Html.HiddenFor(model => model.ViewCount)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.Label("IsApproved")&nbsp;
+                            @Html.CheckBox("IsApproved")
+                        </div>
+                    </div>
+                    <div class="col-6">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button id="payment-button" type="submit" class="btn btn-info">
+                        <i class="fa fa-check"></i>&nbsp;
+                        <span id="payment-button-amount">Cập nhật</span>
+                        <span id="payment-button-sending" style="display:none;">Sending…</span>
+                    </button>
+                    <a href=@Url.Action("list","Product") class="btn btn-info">
+                        <i class="fa fa-arrow-left"></i>&nbsp;
+                        <span id="payment-button-amount">Trở về</span>
+                        <span id="payment-button-sending" style="display:none;">Sending…</span>
+                    </a>
+                </div>
+            </form>
+            }
+        </div>
+    </div>
+</div>

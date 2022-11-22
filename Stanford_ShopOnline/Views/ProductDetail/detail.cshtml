@@ -1,0 +1,92 @@
+﻿@model  Stanford_ShopOnline.Models.ProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "detail";
+}
+
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>Chi tiết sản phẩm</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+<!--================End Home Banner Area =================-->
+<!--================Single Product Area =================-->
+<div class="product_image_area section_padding">
+    <div class="container">
+        <div class="row s_product_inner justify-content-between">
+            <div class="col-lg-7 col-xl-7">
+                <div class="product_slider_img">
+                    <div id="vertical">
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div data-thumb="@Model.ImageUrl">
+                                <img src="@Model.ImageUrl" />
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl1))
+                        {
+                            <div data-thumb="@Model.ImageUrl1">
+                                <img src="@Model.ImageUrl1" />
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl2))
+                        {
+                            <div data-thumb="@Model.ImageUrl2">
+                                <img src="@Model.ImageUrl2" />
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl3))
+                        {
+                            <div data-thumb="@Model.ImageUrl3">
+                                <img src="@Model.ImageUrl3" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-xl-4">
+                <div class="s_product_text">
+                    <h3>@Model.Name</h3>
+                    <h2>@String.Format("{0:0,0}", Convert.ToDouble(Model.Price))</h2>
+                    <ul class="list">
+                        <li>
+                            <span>Mã</span> : @Model.Code
+                        </li>
+                        <li>
+                            <span>Bộ sưu tầm</span> : <a class="active" href="#">@Model.CategoryName</a>
+                        </li>
+                        <li>
+                            <span>Tình trạng</span> : Còn hàng
+                        </li>
+                    </ul>
+                    <p>
+                        @Model.Detail
+                    </p>
+                    <div class="card_area d-flex justify-content-between align-items-center">
+                        <div class="product_count">
+                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                            <input class="input-number" id="input-detail-cart" type="text" value="1" min="1 " max="10">
+                            <span class="number-increment"> <i class="ti-plus"></i></span>
+                        </div>
+                        <a class="btn_3" id="btn-add-cart" data-id="@Model.Id">Thêm giỏ hàng</a>
+                        <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+<!-- product_list part start-->
+@Html.Action("ProductBestSale", "ProductDetail")
+<!-- product_list part end-->

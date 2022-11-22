@@ -1,0 +1,116 @@
+﻿@using System.Globalization
+@model IEnumerable<Stanford_ShopOnline.Models.EF.Distributor>
+
+@{
+    ViewBag.Title = "Distributor";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#card-header").click(function () {
+            $("#card-body").slideToggle();
+            $("#card-header-icon").toggleClass("rotate");
+        })
+
+        $("#reset-form-button").click(function () {
+            $("#keyword").val("");
+        })
+    })
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- DATA TABLE -->
+        <h3 class="title-5 m-b-35">Danh sách nhà phân phối</h3>
+        @using (Html.BeginForm("list", "Distributor", FormMethod.Get))
+        {
+            <div class="card">
+                <div class="card-header cursor-pointer" id="card-header">
+                    Công cụ lọc&nbsp;
+                    <i class="fa fa-caret-down" id="card-header-icon" aria-hidden="true"></i>
+                </div>
+                <div class="card-body" id="card-body">
+                    <form action="" method="post" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group has-success">
+                                    <label class="form-control-label form-control-label-sm" for="Category_Id">Từ khóa</label>
+                                    <input class="form-control form-control-sm" type="text" id="keyword" name="keyword" value="@ViewBag.keyword" placeholder="Tìm kiếm...">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <button id="payment-button" type="submit" class="btn btn-sm btn-info btn-block mt-2">
+                                    <i class="fa fa-filter" aria-hidden="true"></i>&nbsp;
+                                    <span id="payment-button-amount">Lọc</span>
+                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                </button>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <button id="reset-form-button" type="submit" class="btn btn-sm btn-dark btn-block mt-2">
+                                    <i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;
+                                    <span id="payment-button-amount">Đặt lại</span>
+                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <a href="@Url.Action("add", "Distributor")" class="btn btn-sm btn-success">
+                    <i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Thêm
+                </a>
+            </div>
+        }
+
+        <div class="table-responsive table-responsive-data2 table-scoll">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th>Tên nhà phân phối</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="tr-shadow">
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Address
+                            </td>
+                            <td>
+                                @item.Tel
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+                                    <a href=@Url.Action("update", "Distributor", new { id = item.Id }) class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </a>
+                                    <a href=@Url.Action("remove", "Distributor", new { id = item.Id }) class="item" onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>

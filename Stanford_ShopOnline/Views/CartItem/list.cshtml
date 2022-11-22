@@ -1,0 +1,101 @@
+﻿@model List<Stanford_ShopOnline.Models.CartItem>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "list";
+}
+
+@{
+    double totalMoney = 0;
+}
+
+<!--================Home Banner Area =================-->
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>Giỏ hàng</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+<!--================Cart Area =================-->
+<section class="cart_area padding_top">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="@item.Product.ImageUrl" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Product.Code</p>
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Product.Name</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>@String.Format("{0:0,0}", Convert.ToDouble(item.Product.Price))</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
+                                        <input class="input-number input-number-cart" data-id="@item.Product.Id" type="text" value="@item.Quantity" min="0" max="10">
+                                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>@String.Format("{0:0,0}", Convert.ToDouble(item.Product.Price * item.Quantity))</h5>
+                                </td>
+                                <td>
+                                    <button class="btn-remove-cart" data-id="@item.Product.Id" type="button">
+                                        <i class="fa fa-lg fa-trash"></i>
+                                    </button>
+                                </td>
+                                @{totalMoney += (double)(item.Product.Price * item.Quantity); }
+                            </tr>
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Thành tiền</h5>
+                            </td>
+                            <td>
+                                <h5>@String.Format("{0:0,0}", Convert.ToDouble(totalMoney))</h5>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="checkout_btn_inner float-right">
+                    <a class="btn_1" href="@Url.Action("index", "Home")">Tiếp tục mua hàng</a>
+                    <a class="btn_1 checkout_btn_1" href="@Url.Action("checkOut","CheckOut")">Đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

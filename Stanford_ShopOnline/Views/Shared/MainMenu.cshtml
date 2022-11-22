@@ -1,0 +1,31 @@
+﻿@model List<Stanford_ShopOnline.Models.EF.Menu>
+@{ 
+    var menuChildList = (List<Stanford_ShopOnline.Models.EF.MenuChild>)ViewBag.menuChildList;
+}
+<div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+        @foreach (var item in Model)
+        {
+            if (menuChildList.Exists(p => p.Parent_Id == item.Id))
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" target="@item.Target" href="@item.Link" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @item.Name
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                    @foreach(var menuChild in menuChildList)
+                    {
+                        <a class="dropdown-item" target="@menuChild.Target" href="@menuChild.Link">@menuChild.Name</a>
+                    }
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" target="@item.Target" href="@item.Link">@item.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
